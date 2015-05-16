@@ -1,3 +1,26 @@
+This branch allows the user to choose the analyzers that will be loaded to the
+tree associated with every connection.
+
+The configuration file looks like this:
+===========
+HTTP 1
+SSH 0
+SSL 1
+SMTP 1
+DNS 1
+===========
+Where 1 means that the analyzer will be loeade into the tree and 0 means that
+the analyzer will not be loaded.
+The path to this configuration file is hardcoded in 
+bro/src/analyzer/CustomAnalyzerLoader.h so please modify it accordingly.
+
+To build this branch it is necessary to add the "--enable-c++11" flag.
+In 3 steps:
+1) ./configure --prefix=$PREFIX --enable-c++11
+2) make
+3) make install
+
+
 ============================
 Bro Network Security Monitor
 ============================

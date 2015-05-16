@@ -19,7 +19,7 @@ public:
 private:
     CustomAnalyzerLoader();
     static CustomAnalyzerLoader* single;
-    const char* FILE_PATH = "/home/herson/config.txt";
+    const char* FILE_PATH = "/home/bro/config.txt";
     map<string, bool> dpi_protocols;
 };
 
