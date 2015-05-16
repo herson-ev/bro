@@ -10,6 +10,7 @@ add_subdirectory(protocol)
 
 set(analyzer_SRCS
     Analyzer.cc
+    CustomAnalyzerLoader.cc
     Manager.cc
     Component.cc
     Tag.cc

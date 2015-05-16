@@ -34,6 +34,9 @@
 
 #include "analyzer/analyzer.bif.h"
 
+//
+#include "CustomAnalyzerLoader.h"
+
 namespace analyzer {
 
 /**
@@ -336,6 +339,9 @@ public:
 			      Val* analyzer, double timeout);
 
 private:
+	//
+	CustomAnalyzerLoader* cal;
+	
 	typedef set<Tag> tag_set;
 	typedef map<uint32, tag_set*> analyzer_map_by_port;
 

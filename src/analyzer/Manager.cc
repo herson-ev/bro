@@ -62,6 +62,7 @@ bool Manager::ConnIndex::operator<(const ConnIndex& other) const
 Manager::Manager()
 	: plugin::ComponentManager<analyzer::Tag, analyzer::Component>("Analyzer", "Tag")
 	{
+		cal = CustomAnalyzerLoader::getInstance();
 	}
 
 Manager::~Manager()
@@ -281,6 +282,11 @@ bool Manager::UnregisterAnalyzerForPort(Tag tag, TransportProto proto, uint32 po
 
 Analyzer* Manager::InstantiateAnalyzer(Tag tag, Connection* conn)
 	{
+//******************************************************************************
+	if ( ! cal->apply_dpi(GetComponentName(tag).c_str()) ) {
+		return 0;
+	}
+//******************************************************************************
 	Component* c = Lookup(tag);
 
 	if ( ! c )
