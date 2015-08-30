@@ -25,8 +25,7 @@ private:
     void read_config_file_now();
     void print_map_ds();
     static CustomAnalyzerLoader* single;
-    //const char* FILE_PATH = "/home/bro/config.txt";
-    const char* FILE_PATH = "/home/herson/config.txt";
+    const char* FILE_PATH = "/home/bro/config.txt";
     map<string, bool> dpi_protocols;
     const unsigned int MILLIS = 3000;
 
