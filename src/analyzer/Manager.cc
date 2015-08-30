@@ -284,6 +284,7 @@ Analyzer* Manager::InstantiateAnalyzer(Tag tag, Connection* conn)
 	{
 //******************************************************************************
 	if ( ! cal->apply_dpi(GetComponentName(tag).c_str()) ) {
+		DisableAnalyzer(tag);
 		return 0;
 	}
 //******************************************************************************
