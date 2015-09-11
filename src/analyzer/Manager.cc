@@ -283,11 +283,17 @@ bool Manager::UnregisterAnalyzerForPort(Tag tag, TransportProto proto, uint32 po
 Analyzer* Manager::InstantiateAnalyzer(Tag tag, Connection* conn)
 	{
 //******************************************************************************
-	if ( ! cal->apply_dpi(GetComponentName(tag).c_str()) ) {
+	if ( ! cal->apply_dpi(GetComponentName(tag).c_str()) ) { // IF 0
 		DisableAnalyzer(tag);
+
+		//list<Component*> all_analyzers = GetComponents();
+		//cout << "*******************************************" << endl;
+		//for ( list<Component*>::const_iterator i = all_analyzers.begin(); i != all_analyzers.end(); ++i ) {
+			//printf("%s (%s)  ", (*i)->Name().c_str(), IsEnabled((*i)->Tag()) ? "enabled" : "disabled");
+		//}
+
 		return 0;
-	}
-//******************************************************************************
+	}//******************************************************************************
 	Component* c = Lookup(tag);
 
 	if ( ! c )
@@ -296,8 +302,12 @@ Analyzer* Manager::InstantiateAnalyzer(Tag tag, Connection* conn)
 		return 0;
 		}
 
-	if ( ! c->Enabled() )
-		return 0;
+	if ( ! c->Enabled() ) {
+//******************************************************************************
+		//return 0;
+		EnableAnalyzer(tag);
+//******************************************************************************
+	}
 
 	if ( ! c->Factory() )
 		{
